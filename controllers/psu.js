@@ -54,7 +54,8 @@ exports.createPsu = (req, res, next) => {
         })
         .catch(error => {
             return res.status(500).json({
-                message: 'Failed to create Psu'
+                message: 'Failed to create Psu',
+                errorMessage: error
             });
         });
 };
