@@ -44,7 +44,7 @@ exports.createPsu = (req, res, next) => {
         name,
         description,
         price,
-        psucimage: req.file.filename
+        psuimage: req.file.filename
     });
     psu.save()
         .then(result => {
