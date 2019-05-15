@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
 
-const Post = require('../models/Post');
+const Post = require('../models/post');
 
 const environment = require('../env.json');
 
-exports.getPosts = (req, res, next) => {
+exports.getCasings = (req, res, next) => {
     Post.find()
         .exec()
         .then(result => {
@@ -18,7 +18,7 @@ exports.getPosts = (req, res, next) => {
         });
 };
 
-exports.getPost = (req, res, next) => {
+exports.getCasing = (req, res, next) => {
     const id = req.params.id;
     Post.findById(id)
         .exec()
@@ -32,17 +32,19 @@ exports.getPost = (req, res, next) => {
         });
 };
 
-exports.createPost = (req, res, next) => {
+exports.createCasing = (req, res, next) => {
     const {
-        title,
+        name,
         description,
+        price
     } = req.body;
-    const Post = new Post({
-        title,
+    const post = new Post({
+        name,
         description,
-        Postimage: req.file.filename
+        price,
+        casingimage: req.file.filename
     });
-    Post.save()
+    post.save()
         .then(result => {
             return res.status(201).json({
                 message: 'Post created'
