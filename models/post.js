@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const shortid = require('shortid');
 
-const casing = mongoose.Schema({
+const post = mongoose.Schema({
     _id: {
         type: String,
         required: true,
